@@ -25,7 +25,7 @@ const loginPost = async (
     }
 
     const {email, password} = req.body;
-
+    console.log("Request body:", req.body);
     const user = await userModel.findOne({email});
 
     if (!user) {
@@ -52,7 +52,7 @@ const loginPost = async (
       },
       token: token,
     };
-
+    console.log(message);
     res.json(message);
   } catch (error) {
     next(new CustomError('Login failed', 500));
